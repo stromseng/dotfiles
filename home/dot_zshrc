@@ -125,7 +125,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # TheFuck alias
-eval $(thefuck --alias)
+eval $(thefuck --alias fuck)
 
 # Chezmoi, disable Oh My Zsh auto updates, should be updated by refreshing downloaded archives
 DISABLE_AUTO_UPDATE="true"
