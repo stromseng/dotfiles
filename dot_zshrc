@@ -124,4 +124,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 eval $(thefuck --alias)
 
 # Default Editor
-export EDITOR="code --wait"
+export EDITOR='code --wait'
