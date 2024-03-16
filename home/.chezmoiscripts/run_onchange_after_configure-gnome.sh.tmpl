@@ -15,9 +15,9 @@ gsettings set org.gnome.shell favorite-apps "[ \
 {{ if lookPath "firefox" -}}
 	'firefox.desktop', \
 {{ end -}}
-'org.gnome.Nautilus.desktop' \
+'org.gnome.Nautilus.desktop', \
 {{ if lookPath "code" -}}
 	'code_code.desktop', \
 {{ end -}}
-'org.gnome.Terminal.desktop', \
+'org.gnome.Terminal.desktop' \
 ]"
