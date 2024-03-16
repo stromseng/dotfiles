@@ -1,0 +1,15 @@
+[user]
+	email = magnus.stromseng@gmail.com
+	name = Magnus Alexander Strømseng
+[core]
+	editor = code --wait
+[init]
+    defaultBranch = main
+[credential]
+	credentialStore = secretservice
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
