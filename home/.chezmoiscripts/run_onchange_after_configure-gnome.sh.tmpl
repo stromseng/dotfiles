@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+fc-cache
+
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+
+# Set font used by p10k in gnome-terminal
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ font "MesloLGS NF"
+
+
+gsettings set org.gnome.shell favorite-apps "[ \
+{{ if lookPath "firefox" -}}
+	'firefox.desktop', \
+{{ end -}}
+'org.gnome.Nautilus.desktop' \
+{{ if lookPath "code" -}}
+	'code_code.desktop', \
+{{ end -}}
+'org.gnome.Terminal.desktop', \
+]"
