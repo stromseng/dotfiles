@@ -7,6 +7,7 @@ fc-cache
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 
 # Set font used by p10k in gnome-terminal
+profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ font "MesloLGS NF"
 
 
