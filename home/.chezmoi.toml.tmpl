@@ -14,6 +14,5 @@ args = ["--wait", "--diff", "{{ .Destination }}", "{{ .Target }}"]
 [merge]
 command = "zsh"
 args = [
-    "-c",
     args = ["-c", "cp {{ `{{ .Target }}` }} {{ `{{ .Target }}` }}.base && code --new-window --wait --merge {{ `{{ .Destination }}` }} {{ `{{ .Target  }}` }} {{ `{{ .Target }}` }}.base {{ `{{ .Source }}` }}"]
 ]
