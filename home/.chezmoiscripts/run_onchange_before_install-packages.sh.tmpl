@@ -50,6 +50,7 @@ set -eufo pipefail
 # Fedora Installation
 {{ if (eq .chezmoi.osRelease.id "fedora") -}}
 
+echo "Installing packages for fedora"
 {{ $sudo }}dnf upgrade -y
 {{ $sudo }}dnf install -y {{ $packages | join " " }} 
 
@@ -60,6 +61,7 @@ set -eufo pipefail
 # Debain/ubuntu Installation
 {{ if eq .chezmoi.osRelease.id "linux-debian" "linux-ubuntu" -}}
 
+echo "Installing packages for debian/ubuntu"
 {{ $sudo }}apt-get update
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
 
@@ -80,8 +82,10 @@ set -eufo pipefail
 
 # Install flatpaks
 
+echo "Adding flathub flatpak remote"
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
+echo "Installing flatpaks"
 {{   range $flatpaks }}
 {{     $sudo }}flatpak install -y flathub {{ . }}
 {{   end }}
