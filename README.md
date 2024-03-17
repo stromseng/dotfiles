@@ -14,6 +14,16 @@ pull and apply latest changes from repo
 
 After completing the merge in the vscode UI, the file in the chezmoi repo should be ready for commit and/or chezmoi apply/chezmoi update
 
+### TODOS
+
+- Sync keybinds
+    - https://askubuntu.com/questions/527990/add-a-custom-keybinding-with-gsettings-in-ubuntu
+    - https://discussion.fedoraproject.org/t/how-to-export-save-shortcuts-in-gnome/75199
+- Sync more GNOME settings
+- Setup proper Windows OS detection and installs using winget, chocolatey etc.
+- Setup proper Github CLI auth
+- BitWarden CLI for access tokens
+
 ### Inspired by
 
 https://github.com/twpayne/dotfiles/tree/master
