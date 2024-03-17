@@ -64,18 +64,24 @@ set -eufo pipefail
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
 
 {{  if lookPath "snap" }}
+
 {{   range $snaps }}
 ( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install {{ . }}
 {{   end }}
 {{   range $classicSnaps }}
 ( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install --classic {{ . }}
 {{   end }}
+
 {{ end }}
+
 {{ end }}
 
 
 
 # Install flatpaks
+
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 {{   range $flatpaks }}
 {{     $sudo }}flatpak install -y flathub {{ . }}
 {{   end }}
