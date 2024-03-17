@@ -126,3 +126,6 @@ eval $(thefuck --alias fuck)
 
 # Chezmoi, disable Oh My Zsh auto updates, should be updated by refreshing downloaded archives
 DISABLE_AUTO_UPDATE="true"
+# fnm
+export PATH="/home/magnus/.local/share/fnm:$PATH"
+eval "`fnm env`"
