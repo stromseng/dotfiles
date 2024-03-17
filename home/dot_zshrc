@@ -121,11 +121,19 @@ PATH=~/.console-ninja/.bin:$PATH
 
 # MY CUSTOM SPECIFIC SETTINGS
 
+
+# --- Aliases ---
 # TheFuck alias
 eval $(thefuck --alias fuck)
+# Open current dir in nautilus file explorer
+alias open='xdg-open .'
+
+# --- Environment ---
 
 # Chezmoi, disable Oh My Zsh auto updates, should be updated by refreshing downloaded archives
 DISABLE_AUTO_UPDATE="true"
+
+# --- Exports ---
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
