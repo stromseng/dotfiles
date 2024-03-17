@@ -46,7 +46,7 @@ set -eufo pipefail
 
 
 # Debain/ubuntu Installation
-{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+{{ if eq .chezmoi.osRelease.id "linux-debian" "linux-ubuntu" -}}
 
 {{ $sudo }}apt-get update
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
@@ -58,6 +58,7 @@ set -eufo pipefail
 {{   range $classicSnaps }}
 ( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install --classic {{ . }}
 {{   end }}
+{{ end }}
 {{ end }}
 
 
