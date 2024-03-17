@@ -1,5 +1,7 @@
+#!/bin/sh
+
+# General packages supported by both debian and fedora
 {{ $packages := list
-     "build-essential"
      "curl"
      "git"
      "zsh"
@@ -21,12 +23,22 @@
      "com.sindresorhus.Caprine" -}}
 
 
+# Fedora specific packages 
+{{ if (eq .chezmoi.osRelease.id "fedora") -}}
+{{   $packages = mustAppend $packages "@development-tools" -}}
+{{ end -}}
+
+# Debain specific packages 
+{{ if eq .chezmoi.osRelease.id "linux-debian" "linux-ubuntu" -}}
+{{   $packages = mustAppend $packages "build-essential" -}}
+{{ end -}}
+
+
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
 {{   $sudo = "" -}}
 {{ end -}}
 
-#!/bin/sh
 
 # Fail early. 
 # -e ensures that if any command fails, the script will stop. 
