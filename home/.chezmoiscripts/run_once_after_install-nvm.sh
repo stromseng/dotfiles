@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Check for fnm command existance
+# Check for nvm command existance
 if command -v nvm &> /dev/null
 then
     echo "nvm already installed. Skipping..."
