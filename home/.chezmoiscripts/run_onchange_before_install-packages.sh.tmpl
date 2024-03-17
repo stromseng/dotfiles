@@ -1,0 +1,68 @@
+{{ $packages := list
+     "build-essential"
+     "curl"
+     "git"
+     "zsh"
+     "code"
+     "firefox"
+     "golang"
+     "python3"
+     "flatpak" -}}
+
+{{ $snaps := list -}}
+{{ $classicSnaps := list -}}
+
+# Flatpaks
+{{ $flatpaks := list
+     "com.discordapp.Discord"
+     "com.spotify.Client"
+     "com.getpostman.Postman"
+     "com.slack.Slack"
+     "com.sindresorhus.Caprine" -}}
+
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/sh
+
+# Fail early. 
+# -e ensures that if any command fails, the script will stop. 
+# -u ensures that if any variable is used before being set, the script will stop. 
+# -f ensures that if any command has a non-zero exit code, the script will stop. 
+# -o pipefail ensures that if any command in a pipeline fails, the script will stop.
+set -eufo pipefail
+
+# Fedora Installation
+{{ if (eq .chezmoi.osRelease.id "fedora") -}}
+
+{{ $sudo }}dnf upgrade -y
+{{ $sudo }}dnf install -y {{ $packages | join " " }} 
+
+
+{{ end -}}
+
+
+# Debain/ubuntu Installation
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+
+{{ $sudo }}apt-get update
+{{ $sudo }}apt-get install -y {{ $packages | join " " }}
+
+{{  if lookPath "snap" }}
+{{   range $snaps }}
+( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install {{ . }}
+{{   end }}
+{{   range $classicSnaps }}
+( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install --classic {{ . }}
+{{   end }}
+{{ end }}
+
+
+
+# Install flatpaks
+{{   range $flatpaks }}
+{{     $sudo }}flatpak install -y flathub {{ . }}
+{{   end }}
