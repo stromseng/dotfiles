@@ -26,3 +26,4 @@ unset rc
 
 PATH=~/.console-ninja/.bin:$PATH
 
+. "$HOME/.cargo/env"
