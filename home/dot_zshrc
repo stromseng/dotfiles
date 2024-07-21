@@ -69,6 +69,9 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 # Manual plugins
 eval "$(zoxide init zsh)"
 
+# Rustup Cargo
+. "$HOME/.cargo/env"
+
 # Load starship theme
 # line 1: `starship` binary as command, from github release
 # line 2: starship setup at clone(create init.zsh, completion)
@@ -77,3 +80,4 @@ zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
+
